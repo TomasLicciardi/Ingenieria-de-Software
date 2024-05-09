@@ -2,3 +2,5 @@ Requisitos No Funcionales
 1. El nombre de usuario debe tener un límite de 15 caracteres.
 2. El sistema debe ser capaz de manejar múltiples usuarios concurrentes sin degradación del rendimiento.
 3. La API REST debe estar disponible para la integración con otros sistemas, pero el acceso a estos servicios estará restringido a aplicaciones registradas.
+4. La aplicación deberá poder ser visualizada en navegadores Chrome, Mozilla Firefox y Safari.
+5. Los usuarios no pueden publicar mensajes de más de 140 caracteres.
