@@ -26,6 +26,12 @@ class Usuario(db.Model):
                                  secondaryjoin=(Seguidores.c.seguido_id == id),
                                  backref=db.backref('siguiendo', lazy='dynamic'),
                                  lazy='dynamic')
+    seguidos = db.relationship("Usuario",
+                                 secondary=Seguidores,
+                                 primaryjoin=(Seguidores.c.seguido_id == id),
+                                 secondaryjoin=(Seguidores.c.seguidor_id == id),
+                                 backref=db.backref('seguidor', lazy='dynamic'),
+                                 lazy='dynamic')
 
 
     @property

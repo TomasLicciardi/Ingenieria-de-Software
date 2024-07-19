@@ -15,8 +15,10 @@ class Usuario(Resource):
         data = request.get_json().items()
         print(data)
         for key, value in data:
-            setattr(usuario, key, value)
-                
+            if key == 'contrasena':
+                usuario.plain_contrasena = value
+            else:
+                setattr(usuario, key, value)
         db.session.add(usuario)
         db.session.commit()
         return usuario.to_json(), 201
@@ -43,32 +45,41 @@ class Usuarios(Resource):
         return usuario.to_json(), 201
     
 
-class UsuarioSeguidores(Resource):
+class UsuarioSeguidos(Resource):
+    def get(self, id):
+        usuario = db.session.query(UsuarioModel).get_or_404(id)
+        seguidores = usuario.seguidores
+        seguidores_json = [seguidor.to_json() for seguidor in seguidores]
+        return seguidores_json
+     
     def post(self, id):
         usuario = db.session.query(UsuarioModel).get_or_404(id)
-        usuario_actual = request.get_json().get('usuario_actual')
-        seguidor = db.session.query(UsuarioModel).get_or_404(usuario_actual)
-        if (int(id) == usuario_actual):
-            
+        usuario_a_seguir = request.get_json().get('usuario_a_seguir')
+        seguidor = db.session.query(UsuarioModel).get_or_404(usuario_a_seguir)
+        if (int(id) == usuario_a_seguir):
             return{'mensaje': 'No te podes seguir vos mismo'}, 400
-        
         if not seguidor in usuario.seguidores:
             usuario.seguidores.append(seguidor)
             db.session.commit()
             return usuario.to_json(), 201
-        return {'message': 'El usuario ya está siguiendo'}, 400
-
-    def get(self, id):
-        usuario = db.session.query(SeguidoresModel).get_or_404(id)
-        return jsonify({'seguidores': [seguidor.to_json() for seguidor in usuario.seguidores]})
+        return {'message': 'Ya estas siguiendo este usuario'}, 400
 
     def delete(self, id):
-        usuario = db.session.query(SeguidoresModel).get_or_404(id)
-        usuario_actual = request.get_json().get('usuario_actual')
-        seguidor = db.session.query(SeguidoresModel).get_or_404(usuario_actual)
+        usuario = db.session.query(UsuarioModel).get_or_404(id)
+        usuario_a_dejar_de_seguir = request.get_json().get('usuario_a_dejar_de_seguir')
+        seguidor = db.session.query(UsuarioModel).get_or_404(usuario_a_dejar_de_seguir)
 
         if seguidor in usuario.seguidores:
             usuario.seguidores.remove(seguidor)
             db.session.commit()
             return '', 204
-        return {'message': 'El usuario no está siguiendo'}, 400
+        return {'message': 'No estas siguiendo este usuario'}, 400
+
+
+
+class UsuarioSeguidores(Resource):
+    def get(self, id):
+        usuario = db.session.query(UsuarioModel).get_or_404(id)
+        seguidos = usuario.seguidos
+        seguidos_json = [seguido.to_json() for seguido in seguidos]
+        return seguidos_json

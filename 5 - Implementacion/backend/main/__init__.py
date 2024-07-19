@@ -34,16 +34,15 @@ def create_app():
     api.add_resource(resources.MensajeResource, '/mensaje/<id>')
     api.add_resource(resources.Mensajes_PrivadosResource , '/mensajes_privados')
     api.add_resource(resources.Mensaje_PrivadoResource , '/mensaje_privado/<id>')
-    api.add_resource(resources.TablonMensajesResource, '/tablon_mensajes')
-    api.add_resource(resources.TablonMensajeResource, '/tablon_mensaje/<id>')
+    api.add_resource(resources.TablonMensajesResource, '/tablon_mensajes/<id>')
     api.add_resource(resources.MurosResource, '/muros')
     api.add_resource(resources.MuroResource, '/muro/<id>')
     api.add_resource(resources.TablonesResource, '/tablones')
     api.add_resource(resources.TablonResource, '/tablon/<id>')
     api.add_resource(resources.Tablones_TendenciasResource, '/tablones_tendencias')
     api.add_resource(resources.Tablon_TendenciasResource, '/tablon_tendencias/<id>')
-    api.add_resource(resources.UsuarioSeguidoresResource, '/usuario_seguidores/<id>'
-)
+    api.add_resource(resources.UsuarioSeguidoresResource, '/usuario_seguidores/<id>')
+    api.add_resource(resources.UsuarioSeguidosResource, '/usuario_seguidos/<id>')
     
 
 #Iniciaremos los modulos de la app 

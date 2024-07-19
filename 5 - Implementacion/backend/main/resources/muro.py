@@ -32,7 +32,12 @@ class Muros(Resource):
         return jsonify({'muro': [muro.to_json() for muro in muros] })
 
     def post(self):
-        muro = MuroModel.from_json(request.get_json())
+        data = request.get_json()
+        id = data.get('id_usuario')
+        muro_existente = db.session.query(MuroModel).filter_by(id_usuario=id).first()
+        if (muro_existente):
+            return "Ya existe un muro para este usuario", 400
+        muro = MuroModel.from_json(data)
         print(muro)
         try:
             db.session.add(muro)

@@ -2,8 +2,7 @@ from .mensaje_privado import Mensaje_Privado as Mensaje_PrivadoResource
 from .mensaje_privado import Mensajes_Privados as Mensajes_PrivadosResource
 from .mensaje import Mensaje as MensajeResource
 from .mensaje import Mensajes as MensajesResource
-from .mensaje import TablonMensaje as TablonMensajeResource
-from .mensaje import TablonMensajes as TablonMensajesResource
+from .tablon import TablonMensajes as TablonMensajesResource
 from .muro import Muro as MuroResource
 from .muro import Muros as MurosResource
 from .tablon import Tablon as TablonResource
@@ -13,3 +12,4 @@ from .tablon import Tablones_Tendencias as Tablones_TendenciasResource
 from .usuario import Usuario as UsuarioResource
 from .usuario import Usuarios as UsuariosResource
 from .usuario import UsuarioSeguidores as UsuarioSeguidoresResource
+from .usuario import UsuarioSeguidos as UsuarioSeguidosResource
