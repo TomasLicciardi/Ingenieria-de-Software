@@ -1,5 +1,4 @@
 from .. import db
-from . import UsuarioModel
 
 class Muro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -14,6 +13,7 @@ class Muro(db.Model):
         return '<muro: %r %r >' % (self.mensaje,self.id_usuario)
     
     def to_json(self):
+        from . import UsuarioModel
         self.usuario = db.session.query(UsuarioModel).get_or_404(self.id_usuario)
         muro_json = {
             'id': self.id,

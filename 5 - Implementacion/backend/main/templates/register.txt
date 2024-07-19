@@ -1,0 +1,9 @@
+Bienvenido {{usuario.nombre}}!
+
+Gracias por registrarte en nuestro sistema.
+
+Con nuestro servicio podras:
+
+- Enterarte de todas las novedades 
+- Compartir con tus amigos
+- Saber que piensa la gente

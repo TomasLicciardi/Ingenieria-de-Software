@@ -4,3 +4,4 @@ from .muro import Muro as MuroModel
 from .tablon_tendencias import Tablon_Tendencias as Tablon_TendenciasModel
 from .tablon import Tablon as TablonModel
 from .usuario import Usuario as UsuarioModel
+from .usuario import Seguidores as SeguidoresModel

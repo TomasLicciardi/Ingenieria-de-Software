@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from main.models import Mensaje_PrivadoModel
 from .. import db
-from flask import request
+from flask import request, jsonify
 
 
 class Mensaje_Privado(Resource):
@@ -29,7 +29,7 @@ class Mensaje_Privado(Resource):
 class Mensajes_Privados(Resource):
     def get(self):
         mensajes_privados = db.session.query(Mensaje_PrivadoModel)
-        return mensajes_privados.to_json()
+        return jsonify({'mensaje_privado': [mensaje_privado.to_json() for mensaje_privado in mensajes_privados] })
 
     def post(self):
         mensaje_privado = Mensaje_PrivadoModel.from_json(request.get_json())

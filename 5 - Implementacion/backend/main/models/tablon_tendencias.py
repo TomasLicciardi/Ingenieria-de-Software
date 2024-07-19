@@ -1,5 +1,4 @@
 from .. import db
-from . import TablonModel
 
 class Tablon_Tendencias(db.Model):
     id_tablon = db.Column(db.Integer, db.ForeignKey("tablon.id"), primary_key=True)
@@ -13,6 +12,7 @@ class Tablon_Tendencias(db.Model):
         return '<tablon_tendencias: %r %r >' % (self.n_dias,self.tema)
     
     def to_json(self):
+        from . import TablonModel
         self.tablon = db.session.query(TablonModel).get_or_404(self.id_tablon)
         tablon_tendencias_json = {
             'tablon': self.tablon.to_json(),

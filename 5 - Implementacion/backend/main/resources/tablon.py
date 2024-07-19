@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from main.models import Tablon_TendenciasModel, TablonModel
 from .. import db
-from flask import request
+from flask import request, jsonify
 
 class Tablon(Resource):
     def get(self, id):
@@ -28,7 +28,7 @@ class Tablon(Resource):
 class Tablones(Resource):
     def get(self):
         tablones = db.session.query(TablonModel)
-        return tablones.to_json()
+        return jsonify({'tablon': [tablon.to_json() for tablon in tablones] })
 
     def post(self):
         tablon = TablonModel.from_json(request.get_json())
@@ -67,7 +67,7 @@ class Tablon_Tendencias(Resource):
 class Tablones_Tendencias(Resource):
     def get(self):
         tablon_tendencias = db.session.query(Tablon_TendenciasModel)
-        return tablon_tendencias.to_json()
+        return jsonify({'tablon_tendencias': [tablon_tendencias.to_json() for tablon_tendencias in tablon_tendencias] })
 
     def post(self):
         tablon_tendencias = Tablon_TendenciasModel.from_json(request.get_json())

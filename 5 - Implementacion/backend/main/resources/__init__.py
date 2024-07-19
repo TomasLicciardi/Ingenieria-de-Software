@@ -10,4 +10,6 @@ from .tablon import Tablon as TablonResource
 from .tablon import Tablones as TablonesResource
 from .tablon import Tablon_Tendencias as Tablon_TendenciasResource
 from .tablon import Tablones_Tendencias as Tablones_TendenciasResource
-#from .usuario
+from .usuario import Usuario as UsuarioResource
+from .usuario import Usuarios as UsuariosResource
+from .usuario import UsuarioSeguidores as UsuarioSeguidoresResource

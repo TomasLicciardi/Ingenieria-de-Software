@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from main.models import MensajeModel, TablonModel
 from .. import db
-from flask import request
+from flask import request, jsonify
 
 
 class Mensaje(Resource):
@@ -29,7 +29,7 @@ class Mensaje(Resource):
 class Mensajes(Resource):
     def get(self):
         mensajes = db.session.query(MensajeModel)
-        return mensajes.to_json()
+        return jsonify({'mensaje': [mensaje.to_json() for mensaje in mensajes] })
 
     def post(self):
         mensaje = MensajeModel.from_json(request.get_json())

@@ -1,5 +1,4 @@
 from .. import db
-from . import UsuarioModel
 
 class Mensaje_Privado(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -23,9 +22,10 @@ class Mensaje_Privado(db.Model):
         }
         return mensaje_privado_json
     
+
     def to_json_complete(self):
+        from . import UsuarioModel
         self.usuario = db.session.query(UsuarioModel).get_or_404(self.id_usuario)
-        
         mensaje_privado_json = {
             'id': self.id,
             'texto': str(self.texto),

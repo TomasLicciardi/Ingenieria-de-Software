@@ -1,8 +1,7 @@
 from .. import db
-from . import UsuarioModel
 
 tablon_mensaje = db.Table("tablon_mensaje",
-    db.Column("id_clase",db.Integer,db.ForeignKey("mensaje.id"),primary_key=True),
+    db.Column("id_mensaje",db.Integer,db.ForeignKey("mensaje.id"),primary_key=True),
     db.Column("id_tablon",db.Integer,db.ForeignKey("tablon.id"),primary_key=True)
     )
 
@@ -33,6 +32,7 @@ class Mensaje(db.Model):
         return mensaje_json
     
     def to_json_complete(self):
+        from . import UsuarioModel
         self.usuario = db.session.query(UsuarioModel).get_or_404(self.id_usuario)
 
         mensaje_json = {

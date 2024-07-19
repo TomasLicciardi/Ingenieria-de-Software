@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from main.models import MuroModel
 from .. import db
-from flask import request
+from flask import request, jsonify
 
 
 class Muro(Resource):
@@ -29,7 +29,7 @@ class Muro(Resource):
 class Muros(Resource):
     def get(self):
         muros = db.session.query(MuroModel)
-        return muros.to_json()
+        return jsonify({'muro': [muro.to_json() for muro in muros] })
 
     def post(self):
         muro = MuroModel.from_json(request.get_json())
