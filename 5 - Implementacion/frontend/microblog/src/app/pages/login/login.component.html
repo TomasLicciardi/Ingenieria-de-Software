@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" routerLink="/home"><img src="assets/imagenes/logo.png" style="max-height: 2.7em;"
+                alt="Fit Club"></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                <li class="nav-item"><a routerLink="/registrarse"><button class="btn btn-primary"
+                            type="submit">Registrarse</button></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Contact-->
+<section class="page-section" id="contact">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6 text-center mt-5 mb-2">
+                <h2 class="mt-0">Inicia Sesión</h2>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+            <div class="col-lg-6">
+                <form [formGroup]="loginForm">
+                    <div class="form-floating mt-1 mb-2">
+                        <input class="form-control"  type="email" formControlName="email" placeholder="Tu email"/>
+                        <label for="email">Mail</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control"  type="Password" formControlName="contraseña" placeholder=""/>
+                        <label for="Password">Contraseña</label>
+                        
+                    </div>
+                    
+                    <div class="text-center">
+                        <a class="text-muted pt-4" (click)="mostrarAlerta()">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <div class="text-center justify-content-center pt-4"><button class="btn btn-primary"
+                        type="button" (click)="submit()">Iniciar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
