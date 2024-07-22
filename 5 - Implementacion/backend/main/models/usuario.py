@@ -59,6 +59,13 @@ class Usuario(db.Model):
         }
         return usuario_json
     
+    def to_json_token(self):
+        usuario_json = {
+            'id': self.id,
+            'mail': str(self.mail),
+        }
+        return usuario_json
+    
     def to_json_complete(self):
         mensajes_privados = [mensaje_privado.to_json() for mensaje_privado in self.mensajes_privados]
         mensajes = [mensaje.to_json() for mensaje in self.mensajes]

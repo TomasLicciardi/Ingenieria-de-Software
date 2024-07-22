@@ -21,14 +21,14 @@ def login():
     if usuario.validate_pass(request.get_json().get("contrasena")):
         #Genera un nuevo token
         #Pasa el objeto usuario como identidad
-        access_token = create_access_token(identity=usuario.to_json())
+        access_token = create_access_token(identity=usuario.to_json_token())
         #Devolver valores y token
         data = {
             'id': str(usuario.id),
             'mail': usuario.mail,
             'access_token': access_token
         }
-        return jsonify(data), 200
+        return data, 200
     else:
         return 'Contraseña Incorecta', 401
 

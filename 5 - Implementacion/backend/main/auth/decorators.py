@@ -15,6 +15,5 @@ def user_identity_lookup(usuario):
 def add_claims_to_access_token(usuario):
     claims = {
         'id': usuario.id,
-        'mail': usuario.mail
     }
     return claims

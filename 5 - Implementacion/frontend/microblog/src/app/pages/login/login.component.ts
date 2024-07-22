@@ -27,15 +27,15 @@ export class LoginComponent {
    }
   
   login(dataLogin:any = {}){ 
-  //   dataLogin = {email: "hola1234@gmail.com", contraseña: "1234"}
+  //   dataLogin = {email: "tiago4@gmail.com", contraseña: "1234"}
     console.log('Comprobando credenciales');
     this.authService.login(dataLogin).subscribe({
       next: (rta:any) => {
         console.log('Respuesta login: ',rta.access_token);
         localStorage.setItem('token', rta.access_token);
         var decodedPayload: any = jwtDecode(rta.access_token);
-        var idUsuario = decodedPayload['id']
-        localStorage.setItem('id', idUsuario );
+        var usuarioId = decodedPayload['sub']['id'];
+        localStorage.setItem('id', usuarioId );
       },
           error:(error) => {
           alert('Credenciales incorectas');
