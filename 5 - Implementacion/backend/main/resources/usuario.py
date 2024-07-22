@@ -36,7 +36,6 @@ class Usuarios(Resource):
 
     def post(self):
         usuario = UsuarioModel.from_json(request.get_json())
-        print(usuario)
         try:
             db.session.add(usuario)
             db.session.commit()

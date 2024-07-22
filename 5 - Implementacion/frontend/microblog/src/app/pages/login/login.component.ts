@@ -21,11 +21,11 @@ export class LoginComponent {
 
    ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      contraseña: ['', Validators.required]
+      mail: ['', Validators.required],
+      contrasena: ['', Validators.required]
     })
    }
-
+  
   login(dataLogin:any = {}){ 
   //   dataLogin = {email: "hola1234@gmail.com", contraseña: "1234"}
     console.log('Comprobando credenciales');
@@ -46,7 +46,6 @@ export class LoginComponent {
       }
     })
   }
-
 
   submit() {
     if(this.loginForm.valid) {

@@ -14,16 +14,12 @@ export class AuthService {
   ) { }
 
   login(dataLogin:any): Observable<any> {
-
     return this.httpClient.post(this.url + '/auth/login',dataLogin).pipe(take(1));
   }
 
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('rol')
     localStorage.removeItem('id')
-    localStorage.removeItem('idPlanificacion')
-    localStorage.removeItem('idAlumno')
     this.router.navigate(['/','home']);
   }
 

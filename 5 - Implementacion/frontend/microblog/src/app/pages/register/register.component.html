@@ -1,1 +1,76 @@
-<p>register works!</p>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container px-4 px-lg-5 d-flex align navbar-custom">
+        <a class="navbar-brand" routerLink="/home"><img src="../../../assets/logo_casa.png" style="max-height: 2.2em;" alt="Home"></a>
+        <p class="my-auto align-items-center" style="font-size: 22px;">MicroBlogging</p>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav my-2 my-lg-0">
+                <li class="nav-item"><a class="btn btn-primary" routerLink="/login" style="color: #ffff; font-size: 20px;">Inicia sesión</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div style="margin-bottom: 20px;"></div>
+
+
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-5 gx-lg-6 justify-content-center">
+            <div class="col-lg-8 col-xl-6 text-center">
+                <h2 class="mt-0">Registrarse</h2>
+                <hr class="divider" />
+                <p class="text-muted mb-5">¿Ya tienes cuenta? ¡Inicia sesión!</p>
+                <a class="btn btn-primary" routerLink="/login" style="color: #ffff; font-size: 20px;">Inicia sesión</a>
+                <p class="text-muted mb-5"></p>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6 text-center">
+                <h2 class="mt-0">Registrarse</h2>
+                <hr class="divider" />
+                <p class="text-muted mb-5">¿No tienes cuenta? ¡Registrate en MicroBlogging!</p>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+            <div class="col-lg-6">
+            <form [formGroup]="registerForm">
+                <!-- Alias -->
+                <div class="form-floating mb-3">
+                  <input class="form-control" type="text" formControlName="alias" placeholder="Ingresa tu alias..." />
+                  <label for="alias">Alias</label>
+                </div>
+                <!-- Nombre -->
+                <div class="form-floating mb-3">
+                  <input class="form-control" type="text" formControlName="nombre" placeholder="Ingresa tu nombre..." />
+                  <label for="nombre">Nombre</label>
+                </div>
+                <!-- Mail -->
+                <div class="form-floating mb-3">
+                  <input class="form-control" type="email" formControlName="mail" placeholder="Ingresa tu mail..." />
+                  <label for="email">Mail</label>
+                </div>
+                <!-- Descripcion -->
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" formControlName="descripcion" placeholder="Ingresa una descripcion..."></textarea>
+                    <label for="descripcion">Descripcion</label>
+                  </div>
+                <!-- Foto -->
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="file" formControlName="foto" id="foto" accept="image/*" />
+                    <label for="foto">Foto</label>
+                </div>
+                <!-- Contrasena -->
+                <div class="form-floating mb-3">
+                  <input class="form-control" type="password" formControlName="contrasena" placeholder="" />
+                  <label for="Password">Contraseña</label>
+                </div>
+                <!-- Submit Button -->
+                <div class="d-grid justify-content-center">
+                  <button class="btn btn-primary " style="width: min-content;" type="button" (click)="submit()">Registrarse</button>
+                </div>
+              </form>
+            </div>
+          </div>          
+    </div>
+  <app-footer></app-footer>

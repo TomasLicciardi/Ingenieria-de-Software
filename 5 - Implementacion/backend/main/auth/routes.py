@@ -3,6 +3,7 @@
 from flask import request, jsonify, Blueprint
 from .. import db
 from main.models import UsuarioModel
+# from main.models import UsuarioModel
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 from main.mail.functions import sendMail  # Importar sendMail correctamente
 
@@ -20,16 +21,18 @@ def login():
     if usuario.validate_pass(request.get_json().get("contrasena")):
         #Genera un nuevo token
         #Pasa el objeto usuario como identidad
-        access_token = create_access_token(identity=usuario)
+        access_token = create_access_token(identity=usuario.to_json())
         #Devolver valores y token
         data = {
             'id': str(usuario.id),
             'mail': usuario.mail,
             'access_token': access_token
         }
-        return data, 200
+        return jsonify(data), 200
     else:
         return 'Contraseña Incorecta', 401
+
+
 
 #Método de registro
 @auth.route('/register', methods=['POST'])
