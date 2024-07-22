@@ -36,6 +36,7 @@ export class LoginComponent {
         var decodedPayload: any = jwtDecode(rta.access_token);
         var usuarioId = decodedPayload['sub']['id'];
         localStorage.setItem('id', usuarioId );
+        this.router.navigate(['/tablon']);
       },
           error:(error) => {
           alert('Credenciales incorectas');
