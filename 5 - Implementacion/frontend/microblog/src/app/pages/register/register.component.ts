@@ -21,7 +21,7 @@ export class RegisterComponent {
         alias: ['', Validators.required],
         nombre: ['', Validators.required],
         mail: ['', Validators.required],
-        foto: ['', Validators.required],
+        foto: [''],
         contrasena: ['', Validators.required],
         descripcion: ['', Validators.required]
 

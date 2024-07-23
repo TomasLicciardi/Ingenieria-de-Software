@@ -1,0 +1,37 @@
+@media (min-width: 992px) {
+    .navbar-custom p {
+      margin-left: 0px;
+    }
+    .foto-perfil-container {
+      flex-direction: row;
+    }
+  }
+  
+.navbar-custom p {
+  margin-left: 80px;
+}
+
+.foto-perfil-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .foto-perfil {
+    object-fit: cover;
+    max-height: 30px;
+    max-width: 30px;
+  }
+
+
+
+@media (min-width: 992px) {
+    .contenedor-ul {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+    } 
+
+    /* .contenedor-ul li {
+      margin: 0px 10px;
+    } */
+}

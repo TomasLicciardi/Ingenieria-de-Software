@@ -37,7 +37,7 @@
             <form [formGroup]="registerForm">
                 <!-- Alias -->
                 <div class="form-floating mb-3">
-                  <input class="form-control" type="text" formControlName="alias" placeholder="Ingresa tu alias..." />
+                  <input class="form-control" type="text" maxlength="15" minlength="3" formControlName="alias" placeholder="Ingresa tu alias..." />
                   <label for="alias">Alias</label>
                 </div>
                 <!-- Nombre -->
@@ -55,12 +55,6 @@
                     <textarea class="form-control" formControlName="descripcion" placeholder="Ingresa una descripcion..."></textarea>
                     <label for="descripcion">Descripcion</label>
                   </div>
-                <!-- Foto -->
-                <div class="form-floating mb-3">
-                    <input class="form-control" type="file" formControlName="foto" id="foto" accept="image/*" />
-                    <label for="foto">Foto</label>
-                </div>
-                
                 <!-- Contrasena -->
                 <div class="form-floating mb-3">
                   <input class="form-control" type="password" formControlName="contrasena" placeholder="" />

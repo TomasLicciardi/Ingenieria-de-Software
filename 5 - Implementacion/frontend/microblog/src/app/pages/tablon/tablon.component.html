@@ -1,6 +1,65 @@
 <app-navbar></app-navbar>
 
+<section style="padding-top: 80px;">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <form>
+          <div class="form-group">
+            <label class="p-3" for="mensaje">¿Qué está pasando?</label>
+            <textarea class="form-control" id="mensaje" rows="2" name="mensaje" minlength="1" maxlength="140" required [(ngModel)]="mensaje.texto"></textarea>
+          </div>
+          <button class="btn btn-primary my-4 mx-3" style="width: min-content;" type="button"
+            (click)="publicar()">Publicar</button>
+        </form>
+      </div>
+    </div>
+  </div>
 
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card my-4" *ngFor="let mensaje of arrayMensajes">
+          <div class="card-body">
+            <h5 class="card-title"><img class="foto-perfil me-3" src="../../../assets/usuario.png" alt="Perfil">{{mensaje.alias}}</h5>
+            <p class="card-text">{{mensaje.texto}}</p>
+          </div>
+          <span class="d-flex justify-content-between">
+            <span class="ms-3 my-auto small-fecha" style="padding: 0 !important; color: rgb(141, 141, 141);">{{mensaje.fecha}}</span>
+            <span>
+              <button class="me-2 mb-2 btn btn-secondary" *ngIf="mensaje.id_usuario == id_usuario"  (click)="botonMensajeEditar(mensaje)" data-bs-toggle="modal" data-bs-target="#editarMensaje">Editar</button>
+              <button class="me-2 mb-2 btn btn-danger" *ngIf="mensaje.id_usuario == id_usuario" (click)="eliminarMensaje(mensaje)" >Borrar</button>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editarMensaje" tabindex="-1" aria-labelledby="editarMensajeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="editarMensajeModalLabel">Editar Mensaje</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <!-- Formulario para editar un mensaje -->
+              <form>
+                  <div class="mb-3">
+                      <label for="mensaje" class="form-label">Mensaje</label>
+                      <input type="text" class="form-control" id="mensaje" name="mensaje" [(ngModel)]="mensajeaEditar.texto" >
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary btn-danger" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary btn-success" (click)="editarMensaje()" data-bs-dismiss="modal">Guardar</button>
+          </div>
+      </div>
+  </div>
+</div>
+</section>
 
 <app-footer></app-footer>
-

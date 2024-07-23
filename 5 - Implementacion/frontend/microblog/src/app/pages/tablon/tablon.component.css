@@ -1,0 +1,5 @@
+.foto-perfil {
+    object-fit: cover;
+    max-height: 40px;
+    max-width: 40px;
+}

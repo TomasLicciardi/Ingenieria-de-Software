@@ -43,6 +43,7 @@ def create_app():
     api.add_resource(resources.Tablon_TendenciasResource, '/tablon_tendencias/<id>')
     api.add_resource(resources.UsuarioSeguidoresResource, '/usuario_seguidores/<id>')
     api.add_resource(resources.UsuarioSeguidosResource, '/usuario_seguidos/<id>')
+    api.add_resource(resources.UsuarioSeguidosMensajesResource, '/usuario_seguidos_mensajes/<id>')
     
 
 #Iniciaremos los modulos de la app 

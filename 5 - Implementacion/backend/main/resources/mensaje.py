@@ -1,7 +1,8 @@
 from flask_restful import Resource
-from main.models import MensajeModel, TablonModel
+from main.models import MensajeModel
 from .. import db
 from flask import request, jsonify
+from datetime import datetime
 
 
 class Mensaje(Resource):
@@ -14,6 +15,8 @@ class Mensaje(Resource):
         data = request.get_json().items()
         print(data)
         for key, value in data:
+            if key == 'fecha':
+                value = datetime.strptime(value, '%d/%m/%Y, %H:%M:%S')
             setattr(mensaje, key, value)
                 
         db.session.add(mensaje)

@@ -13,3 +13,4 @@ from .usuario import Usuario as UsuarioResource
 from .usuario import Usuarios as UsuariosResource
 from .usuario import UsuarioSeguidores as UsuarioSeguidoresResource
 from .usuario import UsuarioSeguidos as UsuarioSeguidosResource
+from .usuario import UsuarioSeguidosMensajes as UsuarioSeguidosMensajesResource

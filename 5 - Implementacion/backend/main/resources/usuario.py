@@ -1,7 +1,8 @@
 from flask_restful import Resource
-from main.models import UsuarioModel, SeguidoresModel
+from main.models import UsuarioModel, MensajeModel
 from .. import db
 from flask import request, jsonify
+
 
 
 
@@ -82,3 +83,24 @@ class UsuarioSeguidores(Resource):
         seguidos = usuario.seguidos
         seguidos_json = [seguido.to_json() for seguido in seguidos]
         return seguidos_json
+
+class UsuarioSeguidosMensajes(Resource):
+    def get(self, id):
+        usuario = db.session.query(UsuarioModel).get_or_404(id)
+        seguidos = usuario.seguidores
+        seguidos_json = [seguidos.to_json() for seguidos in seguidos] # usuario -- seguidores -- mensajes
+        mensajes_seguidos = []
+        seguidos_ids = [id]
+        
+        
+        for seguido in seguidos_json:
+            seguidos_ids.append(seguido['id'])
+            
+        for id in seguidos_ids:
+            seguido = db.session.query(UsuarioModel).get_or_404(id)
+            mensajes = seguido.mensajes
+            mensajes_json = [mensajes_seguidos.append(mensaje.to_json()) for mensaje in mensajes]
+        
+        mensajes_seguidos.sort(key=lambda x: x['fecha'], reverse=True)
+
+        return mensajes_seguidos

@@ -10,7 +10,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class NavbarComponent {
   idUsuario = Number(localStorage.getItem("id"))
     usuario:any = {
-      "foto": ""
+      "alias": ""
     };  
   constructor(
     private authService: AuthService,
@@ -18,7 +18,7 @@ export class NavbarComponent {
   ){}
 
   ngOnInit(): void {
-    this.usuarioService.getUsarioPerfil(this.idUsuario).subscribe(
+    this.usuarioService.getUsuarioPerfil(this.idUsuario).subscribe(
       (data) => {
         this.usuario = data;
       },
@@ -27,7 +27,7 @@ export class NavbarComponent {
       }
     );
   }
-  
+
   cerrarSesion(){
   this.authService.logout();
   }
