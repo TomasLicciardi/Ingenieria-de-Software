@@ -14,12 +14,11 @@ class Usuario(db.Model):
     foto = db.Column(db.String(200), nullable=False)
     contrasena = db.Column(db.String(150), nullable=False)
     descripcion = db.Column(db.String(300), nullable=False)
-
-
     tablon = db.relationship("Tablon", uselist=False, back_populates="usuario", cascade='all, delete-orphan', single_parent=True)
     muro = db.relationship("Muro", uselist=False, back_populates="usuario", cascade='all, delete-orphan', single_parent=True)
     mensajes_privados = db.relationship("Mensaje_Privado", back_populates='usuario', cascade='all, delete-orphan')
     mensajes = db.relationship("Mensaje", back_populates='usuario', cascade='all, delete-orphan')
+    
     seguidores = db.relationship("Usuario",
                                  secondary=Seguidores,
                                  primaryjoin=(Seguidores.c.seguidor_id == id),

@@ -28,7 +28,4 @@ export class NavbarComponent {
     );
   }
 
-  cerrarSesion(){
-  this.authService.logout();
-  }
 }
